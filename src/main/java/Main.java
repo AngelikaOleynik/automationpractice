@@ -16,7 +16,5 @@ public class Main {
 
         driver.manage().window().maximize();
 
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
-        mainPage.clickSignIn();
     }
 }

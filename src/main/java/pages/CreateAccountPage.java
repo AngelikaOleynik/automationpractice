@@ -7,8 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class CreateAccountPage extends BasePage{
-    WebDriver driver;
+public class CreateAccountPage{
+
+    private WebDriver driver;
 
     //TODO: Personal info
 
@@ -70,10 +71,10 @@ public class CreateAccountPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"city\"]")
     private WebElement fieldCity;
 
-    @FindBy(xpath = "//*[@id=\"id_state\"]")
+    @FindBy(css = "[id=\"id_state\"]")
     private WebElement fieldState;
 
-    @FindBy(xpath = "//*[@id=\"id_state\"]/option") //выбор штата
+    @FindBy(css = "[id=\"id_state\"] > option") //выбор штата
     private List<WebElement> fieldStateList;
 
     @FindBy(xpath = "//*[@id=\"postcode\"]")
@@ -82,7 +83,7 @@ public class CreateAccountPage extends BasePage{
     @FindBy(xpath = "//*[@id=\"id_country\"]")
     private WebElement fieldCountry;
 
-    @FindBy(xpath = "//*[@id=\"id_country\"]/option[2]") // одна страна в выпадающем списке
+    @FindBy(css = "[id=\"id_country\"]> option:nth-child(2)") // одна страна в выпадающем списке
     private WebElement countryUSA;
 
     @FindBy(xpath = "//*[@id=\"phone_mobile\"]")
@@ -95,8 +96,9 @@ public class CreateAccountPage extends BasePage{
     private WebElement buttonRegister;
 
     public CreateAccountPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
+     // super(driver);
+     // driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation");
+      PageFactory.initElements(driver, this);
     }
 
 
@@ -167,7 +169,7 @@ public class CreateAccountPage extends BasePage{
 
     public CreateAccountPage selectState() {
         fieldState.click();
-        fieldStateList.get(4).click();
+        fieldStateList.get(6).click();
         return this;
     }
 
@@ -200,7 +202,5 @@ public class CreateAccountPage extends BasePage{
     public String getHeaderCreateAccountPage(){
         return  headerCreateAnAccount.toString();
     }
-
-
 
 }

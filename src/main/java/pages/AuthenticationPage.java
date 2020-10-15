@@ -1,11 +1,13 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AuthenticationPage extends BasePage {
+@Getter
+public class AuthenticationPage {
 
     WebDriver driver;
 
@@ -24,7 +26,7 @@ public class AuthenticationPage extends BasePage {
     private WebElement errorMail;
 
     public AuthenticationPage(WebDriver driver) {
-        super(driver);
+     //   super(driver);
         PageFactory.initElements(driver, this);
     }
 
@@ -36,21 +38,9 @@ public class AuthenticationPage extends BasePage {
         return this;
     }
 
-
-    public String getHeadingText() {
-        return headingText.getText();
-
-    }
-
-    public String getErrorText() {
-        return errorMail.getText();
-    }
-
     public CreateAccountPage clickCreateAccountButton() {
         createAccountButton.click();
         return new CreateAccountPage(driver);
     }
-
-
 
 }
