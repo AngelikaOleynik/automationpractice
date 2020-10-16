@@ -8,7 +8,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
 public class CreateAccountPage{
-
     private WebDriver driver;
 
     //TODO: Personal info
@@ -96,8 +95,6 @@ public class CreateAccountPage{
     private WebElement buttonRegister;
 
     public CreateAccountPage(WebDriver driver) {
-     // super(driver);
-     // driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account#account-creation");
       PageFactory.initElements(driver, this);
     }
 
@@ -200,7 +197,7 @@ public class CreateAccountPage{
     }
 
     public String getHeaderCreateAccountPage(){
-        return  headerCreateAnAccount.toString();
+        return  headerCreateAnAccount.getText();
     }
 
 }

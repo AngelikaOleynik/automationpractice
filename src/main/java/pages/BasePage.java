@@ -1,18 +1,22 @@
 //package pages;
 //
 //import org.openqa.selenium.WebDriver;
-//import org.openqa.selenium.support.ui.WebDriverWait;
+//import org.openqa.selenium.support.PageFactory;
 //
-//public class BasePage {
+//public abstract class BasePage extends BasePageObject {
 //
-//
-//    private WebDriver driver;
-//    private WebDriverWait wait10second;
-//
+//    protected HeaderBlock headerBlock;
 //
 //    public BasePage(WebDriver driver) {
-//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\1\\Desktop\\repo\\automationpractice\\drivers\\chromedriver.exe");
-//        this.driver = driver;
-//        this.wait10second = new WebDriverWait(driver, 10);
+//        super(driver);
+//        this.headerBlock = new HeaderBlock(driver);
+//        PageFactory.initElements(driver, this);
+//    }
+//
+//    // public LeftNavigation getLeftNavigation() {return leftNavigation;}
+//
+//    public HeaderBlock getHeaderBlock() {
+//        return headerBlock;
 //    }
 //}
+//

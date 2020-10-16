@@ -5,6 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -14,9 +16,10 @@ import java.util.concurrent.TimeUnit;
 
 class AuthenticationPageTest {
 
+
     private WebDriver driver;
     private AuthenticationPage authPage;
-    private CreateAccountPage createAccountPage;
+    private CreateAccountPage createAccountPage = new CreateAccountPage(driver);
 
     @BeforeEach
     public void setUp() {
@@ -31,18 +34,19 @@ class AuthenticationPageTest {
         createAccountPage = new CreateAccountPage(driver);
     }
 
-    @AfterEach
-    void tearDown() {
-        driver.quit();
-    }
+//    @AfterEach
+//    void tearDown() {
+////        driver.quit();
+//    }
 
-
+@ParameterizedTest
+@ValueSource(strings = {"bademail", "verybademail"})
     @Test
-    void typeEmailTest() {
+    void typeGoodEmailTest() {
 
         String email = System.currentTimeMillis() + "goodmail@mail.com";
         authPage.typeEmail(email);
         String expectedHeader = createAccountPage.getHeaderCreateAccountPage();
-        Assert.assertEquals("YOUR PERSONAL INFORMATION", expectedHeader);
+        Assert.assertEquals("AUTHENTICATION", expectedHeader);
     }
 }

@@ -1,12 +1,11 @@
 package pages;
 
-import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-@Getter
+
 public class AuthenticationPage {
 
     WebDriver driver;
@@ -31,6 +30,7 @@ public class AuthenticationPage {
     }
 
 
+
     public AuthenticationPage typeEmail(String email) {
         inputEmailForRegistrationField.clear();
         inputEmailForRegistrationField.sendKeys(email);
@@ -41,6 +41,10 @@ public class AuthenticationPage {
     public CreateAccountPage clickCreateAccountButton() {
         createAccountButton.click();
         return new CreateAccountPage(driver);
+    }
+
+    public String getHeadingText(){
+       return headingText.getText();
     }
 
 }

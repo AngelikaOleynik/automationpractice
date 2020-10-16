@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) {
-        System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\Desktop\\repo\\automationpractice\\drivers\\geckodriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\Users\\1\\Desktop\\repo\\automationpractice\\drivers\\chromedriver.exe");
 
         WebDriver driver = new FirefoxDriver();
 
