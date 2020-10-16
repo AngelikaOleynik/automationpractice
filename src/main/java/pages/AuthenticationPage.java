@@ -24,6 +24,10 @@ public class AuthenticationPage {
     @FindBy(xpath =   "//*[@id=\"create_account_error\"]/ol/li")
     private WebElement errorMail;
 
+    public String getErrorMail() {
+        return errorMail.getText();
+    }
+
     public AuthenticationPage(WebDriver driver) {
      //   super(driver);
         PageFactory.initElements(driver, this);

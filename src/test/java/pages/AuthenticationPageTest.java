@@ -38,9 +38,18 @@ class AuthenticationPageTest {
 //    void tearDown() {
 ////        driver.quit();
 //    }
+    @DisplayName("Ввод невалидного email")
+    @ParameterizedTest
+    @ValueSource(strings = {"bademail", "verybademail"})
+    void typeDadEmail(String email) {
+        authPage.typeEmail(email);
+        String expectedErrorHead = authPage.getErrorMail();
+        Assert.assertEquals("Invalid email address.", expectedErrorHead);
 
-@ParameterizedTest
-@ValueSource(strings = {"bademail", "verybademail"})
+    }
+
+
+    @DisplayName("Ввод валидного email")
     @Test
     void typeGoodEmailTest() {
 
