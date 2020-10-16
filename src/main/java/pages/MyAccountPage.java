@@ -48,7 +48,7 @@ public class MyAccountPage {
         return heading.getText();
     }
 
-    public String getMyAccountHeaderText(){
-        return  myAccountHeader.getText();
+    public String getMyAccountHeaderText() {
+        return myAccountHeader.getText();
     }
 }

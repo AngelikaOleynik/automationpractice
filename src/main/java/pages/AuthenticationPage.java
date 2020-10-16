@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class AuthenticationPage {
 
-    WebDriver driver;
+    private WebDriver driver;
 
     //поле для ввода нового е-мейла
     @FindBy(xpath = "//*[@id=\"email_create\"]")
@@ -21,7 +21,7 @@ public class AuthenticationPage {
     @FindBy(xpath = "//div[contains(@class, 'center_column')]/h1")
     private WebElement headingText;
 
-    @FindBy(xpath =   "//*[@id=\"create_account_error\"]/ol/li")
+    @FindBy(xpath = "//*[@id=\"create_account_error\"]/ol/li")
     private WebElement errorMail;
 
     public String getErrorMail() {
@@ -29,10 +29,8 @@ public class AuthenticationPage {
     }
 
     public AuthenticationPage(WebDriver driver) {
-     //   super(driver);
         PageFactory.initElements(driver, this);
     }
-
 
 
     public AuthenticationPage typeEmail(String email) {
@@ -50,14 +48,13 @@ public class AuthenticationPage {
     }
 
 
-
     public CreateAccountPage clickCreateAccountButton() {
         createAccountButton.click();
         return new CreateAccountPage(driver);
     }
 
-    public String getHeadingText(){
-       return headingText.getText();
+    public String getHeadingText() {
+        return headingText.getText();
     }
 
 }
