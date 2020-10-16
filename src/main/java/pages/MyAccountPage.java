@@ -7,7 +7,10 @@ import org.openqa.selenium.support.PageFactory;
 
 public class MyAccountPage {
 
-    WebDriver driver;
+    private WebDriver driver;
+
+    @FindBy(xpath = "//*[@id=\"center_column\"]/h1")
+    private WebElement myAccountHeader;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/div/div[1]/ul/li[1]/a/span")
     private WebElement buttonHistoryOrder;
@@ -31,7 +34,7 @@ public class MyAccountPage {
     private WebElement heading;
 
     public MyAccountPage(WebDriver driver) {
-     //   super(driver);
+
         PageFactory.initElements(driver, this);
     }
 
@@ -43,5 +46,9 @@ public class MyAccountPage {
 
     public String getTextInAccount() {
         return heading.getText();
+    }
+
+    public String getMyAccountHeaderText(){
+        return  myAccountHeader.getText();
     }
 }

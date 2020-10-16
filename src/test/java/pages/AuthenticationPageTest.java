@@ -58,4 +58,6 @@ class AuthenticationPageTest {
         String expectedHeader = createAccountPage.getHeaderCreateAccountPage();
         Assert.assertEquals("AUTHENTICATION", expectedHeader);
     }
+
+
 }

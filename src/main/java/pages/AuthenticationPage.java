@@ -42,6 +42,15 @@ public class AuthenticationPage {
         return this;
     }
 
+    public CreateAccountPage typeEmailCreateAccount(String email) {
+        inputEmailForRegistrationField.clear();
+        inputEmailForRegistrationField.sendKeys(email);
+        clickCreateAccountButton();
+        return new CreateAccountPage(driver);
+    }
+
+
+
     public CreateAccountPage clickCreateAccountButton() {
         createAccountButton.click();
         return new CreateAccountPage(driver);
