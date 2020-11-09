@@ -3,7 +3,6 @@ package pages;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.en_scouse.An;
 import cucumber.api.junit.Cucumber;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
@@ -42,11 +41,10 @@ class CreateAccountPageTest {
     @Then("^I get to the profile page$")
     @DisplayName("Регистрация нового пользователя")
     @Test
-  //  @ValueSource(strings = {"firstname", "lastname", "password", "address", "city", "12345", "892585485015", "aliasAddress"})
     void newUserRegistrationTest() {
         String email = System.currentTimeMillis() + "goodmail@mail.com";
         authPage.typeEmailCreateAccount(email);
-       createAccountPage.clickRadioButtonMrs()
+        createAccountPage.clickRadioButtonMrs()
                 .typeFirstName("firstname")
                 .typeLastName("lastname")
                 .typePassword("password")

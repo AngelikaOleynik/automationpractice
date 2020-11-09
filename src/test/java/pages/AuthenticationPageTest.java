@@ -1,5 +1,6 @@
 package pages;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.junit.Cucumber;
@@ -22,8 +23,10 @@ class AuthenticationPageTest {
     private AuthenticationPage authPage;
     private CreateAccountPage createAccountPage = new CreateAccountPage(null);
 
+
     @BeforeEach
-    public void setUp() {
+    @Given("^Site login page$")
+    public void site_login_page() {
         System.setProperty("webdriver.chrome.driver", "D:\\repositories\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
@@ -33,6 +36,7 @@ class AuthenticationPageTest {
         driver.get("http://automationpractice.com/index.php?controller=authentication&back=my-account");
         authPage = new AuthenticationPage(driver);
         createAccountPage = new CreateAccountPage(driver);
+        throw new io.cucumber.java.PendingException();
     }
 
     @When("^iEnterACertainEmailIntoTheAccountCreationField$")
