@@ -1,13 +1,12 @@
 package pages;
 
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import cucumber.api.junit.Cucumber;
 import org.junit.Assert;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,7 +21,6 @@ class CreateAccountPageTest {
     private CreateAccountPage createAccountPage;
     private MyAccountPage myAccountPage;
 
-    @BeforeEach
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "D:\\repositories\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
@@ -36,12 +34,10 @@ class CreateAccountPageTest {
         myAccountPage = new MyAccountPage(driver);
     }
 
-    @When("^I fill in the data in the registration form$")
-    @And("^I click \"Register\" button$")
-    @Then("^I get to the profile page$")
-    @DisplayName("Регистрация нового пользователя")
-    @Test
-    void newUserRegistrationTest() {
+    @When("I fill in the data in the registration form")
+    @And("^I click \"Register\" button")
+    @Then("I get to the profile page")
+    public void newUserRegistrationTest() {
         String email = System.currentTimeMillis() + "goodmail@mail.com";
         authPage.typeEmailCreateAccount(email);
         createAccountPage.clickRadioButtonMrs()
