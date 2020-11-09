@@ -98,8 +98,13 @@ public class CreateAccountPage{
       PageFactory.initElements(driver, this);
     }
 
-
     public CreateAccountPage checkPageAfterNegativeTry() {
+        return this;
+    }
+
+    public CreateAccountPage createAccount(){
+        clickRadioButtonMrs();
+        typeFirstName("Firstname");
         return this;
     }
 

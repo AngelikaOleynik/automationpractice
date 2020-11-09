@@ -1,29 +1,30 @@
 package pages;
 
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import cucumber.api.junit.Cucumber;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-
 import java.util.concurrent.TimeUnit;
 
-
+@RunWith(Cucumber.class)
 class AuthenticationPageTest {
-
 
     private WebDriver driver;
     private AuthenticationPage authPage;
-    private CreateAccountPage createAccountPage = new CreateAccountPage(driver);
+    private CreateAccountPage createAccountPage = new CreateAccountPage(null);
 
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\1\\Desktop\\repo\\automationpractice\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\repositories\\drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -34,21 +35,21 @@ class AuthenticationPageTest {
         createAccountPage = new CreateAccountPage(driver);
     }
 
-//    @AfterEach
-//    void tearDown() {
-////        driver.quit();
-//    }
+    @When("^iEnterACertainEmailIntoTheAccountCreationField$")
+    @Then("^I get an error \"Invalid email address.\"$")
     @DisplayName("Ввод невалидного email")
     @ParameterizedTest
     @ValueSource(strings = {"bademail", "verybademail"})
-    void typeDadEmail(String email) {
+    void iEnterACertainEmailIntoTheAccountCreationField(String email) {
+
         authPage.typeEmail(email);
         String expectedErrorHead = authPage.getErrorMail();
         Assert.assertEquals("Invalid email address.", expectedErrorHead);
 
     }
 
-
+    @When("^I enter the correct email in the registration form$")
+    @Then("^ I get to the page with the registration form$")
     @DisplayName("Ввод валидного email")
     @Test
     void typeGoodEmailTest() {
@@ -58,6 +59,5 @@ class AuthenticationPageTest {
         String expectedHeader = createAccountPage.getHeaderCreateAccountPage();
         Assert.assertEquals("AUTHENTICATION", expectedHeader);
     }
-
 
 }

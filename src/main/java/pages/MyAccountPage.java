@@ -44,6 +44,7 @@ public class MyAccountPage {
         return new MainPage(driver);
     }
 
+
     public String getTextInAccount() {
         return heading.getText();
     }
