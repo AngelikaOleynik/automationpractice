@@ -21,7 +21,7 @@ public class AuthenticationPageTest {
 
     @Given("^Site login page$")
     public void site_login_page() {
-        System.setProperty("webdriver.chrome.driver", "D:\\repositories\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

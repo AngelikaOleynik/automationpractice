@@ -1,4 +1,6 @@
 Feature: Some feature
+
+  @myScenario
   Scenario: Login
     Given Site login page
     When I enter a certain email into the account creation field
