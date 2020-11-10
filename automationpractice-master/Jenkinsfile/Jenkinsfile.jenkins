@@ -1,4 +1,7 @@
-node{
+pipeline {
+    agent any
+
+stages{
     stage ('SCM checkout'){
         git 'https://github.com/AngelikaOleynik/automationpractice'
     }
@@ -6,6 +9,8 @@ node{
         sh 'mvn package'
     }
         stage ('Run Cucumber tests'){
-            sh 'mvn test -Dtest=TestRunner -Dcucumber.options="--tags @firstScenario'
+
+            sh 'mvn test -Dtest=TestRunner -Dcucumber.options="--tags @myScenario'
         }
+    }
 }
